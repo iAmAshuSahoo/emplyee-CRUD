@@ -1,25 +1,11 @@
-import EmployeeForm from '../components/EmployeeForm'
+import EmployeeList from '../components/EmployeeList'
 
 function Employee ({employees}) {
     // return <h1>Hi</h1>
-    console.log(employees)
     return (
         <>
-            <h1>List of Employee Data</h1>
-            <EmployeeForm
-                onAddorEdit={() => {}}
-                currentIndex={"1"}
-                list={[]}
-                selectedEmployee={[]} />
-            {employees.map(emp => {
-                return (
-                    <div key={emp.id}>
-                        <h3>{emp.id} {emp.title}</h3>
-                        <h3>{emp.name}</h3>
-                        <hr />
-                    </div>
-                );
-            })}
+            <EmployeeList 
+                employees={employees || []} />
         </>
     );
 }

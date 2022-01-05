@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 const EmployeeForm = (props) => {
 
     const [empState, setEmpState] = useState({
-        EmployeeName: '',
-        EmployeeAddress: "",
-        EmployeePhone: "",
-        EmployeeEmail: '',
+        name: '',
+        title: "",
+        experience: "",
         id: ''
     })
 
@@ -17,30 +16,25 @@ const EmployeeForm = (props) => {
 
     const handleInputChange = e => {
 
-        if (e.target.name === "EmployeeName") {
-            setEmpState({ ...empState, EmployeeName: e.target.value })
+        if (e.target.name === "name") {
+            setEmpState({ ...empState, name: e.target.value })
         } else if (
-            e.target.name === "EmployeeAddress"
+            e.target.name === "title"
         ) {
-            setEmpState({ ...empState, EmployeeAddress: e.target.value })
+            setEmpState({ ...empState, title: e.target.value })
         } else if (
-            e.target.name === "EmployeePhone"
+            e.target.name === "experience"
         ) {
-            setEmpState({ ...empState, EmployeePhone: e.target.value })
-        } else if (
-            e.target.name === "EmployeeEmail"
-        ) {
-            setEmpState({ ...empState, EmployeeEmail: e.target.value })
-        }
+            setEmpState({ ...empState, experience: e.target.value })
+        } 
     }
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         setEmpState({
-            EmployeeName: '',
-            EmployeeAddress: "",
-            EmployeePhone: "",
-            EmployeeEmail: '',
+            name: '',
+            title: "",
+            experience: "",
             id: ''
         })
         props.onAddorEdit(empState)
@@ -51,13 +45,11 @@ const EmployeeForm = (props) => {
         <div>
             <form onSubmit={handleSubmit} autoComplete="off">
                 <label> Employee Name* </label>
-                <input name="EmployeeName" value={empState.EmployeeName} onChange={handleInputChange} />
-                <label> Employee Address</label>
-                <input name="EmployeeAddress" value={empState.EmployeeAddress} onChange={handleInputChange} />
-                <label> Employee Phone </label>
-                <input name="EmployeePhone" value={empState.EmployeePhone} onChange={handleInputChange} />
-                <label> Employee Email </label>
-                <input name="EmployeeEmail" value={empState.EmployeeEmail} onChange={handleInputChange} />
+                <input name="name" value={empState.name} onChange={handleInputChange} />
+                <label> Employee title</label>
+                <input name="title" value={empState.title} onChange={handleInputChange} />
+                <label> Employee experience (in years) </label>
+                <input name="experience" value={empState.experience} onChange={handleInputChange} />
                 <button type="submit" >Submit</button>
             </form>
         </div>
